@@ -188,6 +188,8 @@ SpatialPCA_estimate_parameter = function(param_ini, params){
     gc()
 
     W_est_here = eigs_sym(G_each, k=PCnum, which = "LM")$vectors
+      objective = -(-sum_det -(k*(n-q))/2*log(params$tr_YMY+F_funct_sameG(W_est_here,G_each)))
+      cat(paste("## The estimated tau is: ", tau," \n","The estimated objective is ",objective," \n"))
     -(-sum_det -(k*(n-q))/2*log(params$tr_YMY+F_funct_sameG(W_est_here,G_each)))
 }
 
